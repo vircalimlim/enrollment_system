@@ -90,7 +90,7 @@ Route::prefix('user')->name('user.')->group(function(){
 
 //Admin routes
 
-Route::prefix('admin')->middleware(['auth','auth.isAdmin','verified'])->name('admin.')->group(function(){
+Route::prefix('admin')->middleware(['auth','auth.isAdmin'])->name('admin.')->group(function(){
 
     Route::resource('users',UserController::class);
     Route::get('disabled_admin', DisabledAdmin::class)->name('disabled_admin');
