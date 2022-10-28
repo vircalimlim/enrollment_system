@@ -33,13 +33,13 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('is-admin',function($user){
 
-            return $user->hasAnyRole('admin');
+            return $user->hasAnyRole('Admin') || $user->hasAnyRole('admin');
 
         });
 
         Gate::define('is-student',function($user){
 
-            return $user->hasAnyRole('accepted');
+            return $user->hasAnyRole('accepted') || $user->hasAnyRole('Accepted');
 
         });
 

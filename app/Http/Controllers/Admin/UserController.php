@@ -29,22 +29,21 @@ class UserController extends Controller
      */
     public function index()
     {
-        //  if(Gate::denies('logged-in')){
+        if(Gate::denies('logged-in')){
 
-        //     return 'no access allowed';
-        //     dd('no access allowed');
-        //   }
-          if(Gate::allows('is-admin')){
+            dd('no access allowed');
+        }
 
-    return view('admin.users.index',['users'=> User::whereHas('roles', function($query) {
-      $query->whereNotNull('email_verified_at')->where('name', 'pending');
+        if(Gate::allows('is-admin')){
 
-      })->orderBy('id')->paginate(10)]);
+                return view('admin.users.index',['users'=> User::whereHas('roles', function($query) {
+                $query->whereNotNull('email_verified_at')->where('name', 'pending');
 
-          }
+                })->orderBy('id')->paginate(10)]);
 
-        //   return 'you need to be an admin';
-        //   dd('you need to be an admin');
+        }
+
+          dd('you need to be an admin');
     }
 
     /**
