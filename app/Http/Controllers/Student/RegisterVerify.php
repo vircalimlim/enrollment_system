@@ -120,23 +120,16 @@ else{
 
         ];
 
-// Notification::route('mail', $request['email'])
-//     ->notify(new EmailVerification($verification));
-$to_name = 'Vir';
-$to_email = 'killerfinisher12@gmail.com';
-$data_email = array('name' => 'Ogbonna Vitalis(sender_name)', 'body' => 'A test mail');
+    // Notification::route('mail', $request['email'])
+    //     ->notify(new EmailVerification($verification));
 
-// Mail::send('mailer.verification', $verification, function($message) use ($to_name, $to_email) {
-//     $message->to($to_email, $to_name)->subject('Laravel Test Mail');
-//     $message->from('thesislaravel@gmail.com', 'Test Mail');
-// });
-Mail::to($request['email'])->send(new Verify($verification));
+    Mail::to($request['email'])->send(new Verify($verification)); //send email
 
-   $schoolyear = SchoolYear::where('status','active')->orWhere('status','paused')->first();
+    $schoolyear = SchoolYear::where('status','active')->orWhere('status','paused')->first();
 
-  $request->session()->flash('success','Check your email for your email verification');
+    $request->session()->flash('success','Check your email for your email verification');
 
-   return view('auth.first_register',['schoolyear'=> $schoolyear, 'status' => 'true']); 
+    return view('auth.first_register',['schoolyear'=> $schoolyear, 'status' => 'true']); 
 }
 
     }

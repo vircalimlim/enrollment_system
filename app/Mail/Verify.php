@@ -20,9 +20,6 @@ class Verify extends Mailable
 
     public function build()
     {
-        // return $this
-        //     ->subject('Thank you for subscribing to our newsletter')
-        //     ->markdown('mailer.verification');
 
         $verification = $this->verification;
 
