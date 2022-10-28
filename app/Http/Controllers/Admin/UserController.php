@@ -29,10 +29,11 @@ class UserController extends Controller
      */
     public function index()
     {
-         if(Gate::denies('logged-in')){
+        //  if(Gate::denies('logged-in')){
 
-            dd('no access allowed');
-          }
+        //     return 'no access allowed';
+        //     dd('no access allowed');
+        //   }
           if(Gate::allows('is-admin')){
 
     return view('admin.users.index',['users'=> User::whereHas('roles', function($query) {
@@ -42,7 +43,8 @@ class UserController extends Controller
 
           }
 
-          dd('you need to be an admin');
+        //   return 'you need to be an admin';
+        //   dd('you need to be an admin');
     }
 
     /**
