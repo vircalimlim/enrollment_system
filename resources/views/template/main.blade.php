@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <link rel="shortcut icon" href={{URL::asset('logo.png')}} type="image/x-icon">
-  <link href="{{asset('css/bootstrap.css') }}" rel="stylesheet">
-  <link href="{{asset('css/app.css') }}" rel="stylesheet">
+  <link href="/css/bootstrap.css" rel="stylesheet">
+  <link href="/css/app.css" rel="stylesheet">
   <script src="https://code.jquery.com/jquery-1.12.3.js"></script>
   <script src="htpps://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
-  <script src="{{asset('js/app.js') }}" defer> </script>
+  <script src="/js/app.js" defer> </script>
 
 <link rel="stylesheet" href="https://www.cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>

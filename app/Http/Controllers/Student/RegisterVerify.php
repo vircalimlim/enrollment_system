@@ -13,6 +13,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use App\Notifications\EmailVerification;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Verify;
 
 class RegisterVerify extends Controller
 {
@@ -110,7 +112,7 @@ else{
 
     $url = URL::signedRoute('user.verifyconfirm' , ['email'=> $request['email'],'lrn'=> $request['lrnnumber']]);
         $verification =[
-
+            'email' => $request['email'],
             'body'=> 'You are almost done! Please verify that this is your email. Once you verify that this is your email, you will be redirected to your enrolment form.',
             'message'=> 'Verify Email',
             'url'=> $url,
@@ -118,8 +120,17 @@ else{
 
         ];
 
-Notification::route('mail', $request['email'])
-    ->notify(new EmailVerification($verification));
+// Notification::route('mail', $request['email'])
+//     ->notify(new EmailVerification($verification));
+$to_name = 'Vir';
+$to_email = 'killerfinisher12@gmail.com';
+$data_email = array('name' => 'Ogbonna Vitalis(sender_name)', 'body' => 'A test mail');
+
+// Mail::send('mailer.verification', $verification, function($message) use ($to_name, $to_email) {
+//     $message->to($to_email, $to_name)->subject('Laravel Test Mail');
+//     $message->from('thesislaravel@gmail.com', 'Test Mail');
+// });
+Mail::to($request['email'])->send(new Verify($verification));
 
    $schoolyear = SchoolYear::where('status','active')->orWhere('status','paused')->first();
 
