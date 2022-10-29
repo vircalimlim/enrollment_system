@@ -37,7 +37,7 @@ class UserController extends Controller
         if(Gate::allows('is-admin')){
 
                 return view('admin.users.index',['users'=> User::whereHas('roles', function($query) {
-                $query->whereNotNull('email_verified_at')->where('name', 'pending');
+                $query->whereNotNull('email_verified_at')->whereIn('name', ['pending', 'Pending']);
 
                 })->orderBy('id')->paginate(10)]);
 

@@ -20,7 +20,7 @@ class Rejected extends Controller
           if(Gate::allows('is-admin')){
 
     return view('admin.users.rejected',['users'=> User::whereHas('roles', function($query) {
-      $query->whereNotNull('email_verified_at')->where('name', 'declined');
+      $query->whereNotNull('email_verified_at')->whereIn('name', ['declined', 'Declined']);
 
       })->orderBy('id')->paginate(10)]);
 
