@@ -25,26 +25,26 @@ class Statistics extends Controller
 
      $female = User::whereHas('roles', function($query) {
 
-      $query->where('sex','female')->where('name', 'accepted');
+      $query->where('sex','female')->whereIn('name', ['accepted', 'Accepted']);
 
       })->count();
 
      $male = User::whereHas('roles', function($query) {
 
-      $query->where('sex','male')->where('name', 'accepted');
+      $query->where('sex','male')->whereIn('name', ['accepted', 'Accepted']);
 
       })->count();
 
      $transferee = User::whereHas('roles', function($query) {
 
-      $query->where('studenttype','Transferee')->where('name', 'accepted');
+      $query->where('studenttype','Transferee')->whereIn('name', ['accepted', 'Accepted']);
 
       })->count();
 
 
      $old = User::whereHas('roles', function($query) {
 
-      $query->where('studenttype','Old Student')->where('name', 'accepted');
+      $query->where('studenttype','Old Student')->whereIn('name', ['accepted', 'Accepted']);
 
       })->count();
 
@@ -86,7 +86,7 @@ $top_modality = DB::table('modality_user')
 
      $returning = User::whereHas('roles', function($query) {
 
-      $query->where('studenttype','Balik Aral/Returning Student')->where('name', 'accepted');
+      $query->where('studenttype','Balik Aral/Returning Student')->whereIn('name', ['accepted', 'Accepted']);
 
       })->count();
 
